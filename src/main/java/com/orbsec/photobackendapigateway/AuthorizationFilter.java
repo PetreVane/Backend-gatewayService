@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Component
@@ -25,8 +26,7 @@ public class AuthorizationFilter extends AbstractGatewayFilterFactory<Authorizat
         super(Config.class);
     }
 
-    public static class Config {
-        // Add Configuration properties here.
+    public static interface Config {
     }
 
     @Override
@@ -45,7 +45,7 @@ public class AuthorizationFilter extends AbstractGatewayFilterFactory<Authorizat
 
             // extract the token from header. Remove the word 'Bearer'
             var token = header.replace("Bearer", "");
-            logger.info("AUTHORIZATION TOKEN: " + token);
+            logger.log(Level.INFO, "AUTHORIZATION TOKEN {}", token);
 
             // send token for validation
             var validToken = isTokenValid(token);
