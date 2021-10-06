@@ -1,4 +1,4 @@
-package com.orbsec.photobackendapigateway;
+package com.orbsec.photobackendapigateway.logs;
 
 import ch.qos.logback.classic.LoggerContext;
 import net.logstash.logback.appender.LogstashTcpSocketAppender;
