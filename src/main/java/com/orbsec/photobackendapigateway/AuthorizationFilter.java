@@ -20,13 +20,12 @@ public class AuthorizationFilter extends AbstractGatewayFilterFactory<Authorizat
 
     @Autowired
     private Environment environment;
-    private Logger logger = Logger.getLogger(getClass().getName());
 
     public AuthorizationFilter() {
         super(Config.class);
     }
 
-    public static interface Config {
+    public static class Config {
     }
 
     @Override
@@ -45,8 +44,6 @@ public class AuthorizationFilter extends AbstractGatewayFilterFactory<Authorizat
 
             // extract the token from header. Remove the word 'Bearer'
             var token = header.replace("Bearer", "");
-            logger.log(Level.INFO, "AUTHORIZATION TOKEN {}", token);
-
             // send token for validation
             var validToken = isTokenValid(token);
             if (!validToken) {
