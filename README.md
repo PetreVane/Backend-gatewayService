@@ -1,6 +1,13 @@
-# Backend-gatewayService
+# Gateway service
 
 Part of [Micro-backend-app](https://github.com/PetreVane/Micro-backend-app)
+
+### Responsabilities
+    
+    * Routes calls to downstream microservice, depending on the existence of Authorization Header
+    * Deals with JWT token validation
+
+   
 
 ### Dependencies
 
